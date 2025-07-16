@@ -461,3 +461,8 @@ body {
     overflow-x: auto;
   }
 }
+
+/* Remove tap highlight on mobile browser */
+* {
+  -webkit-tap-highlight-color: transparent;
+}

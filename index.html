@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KTU STATS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-bar">
+    <div class="left">🎓 KTU STATS</div>
+    <a class="right" href="https://github.com/chayotic" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero split">
+    <div class="hero-left">
+      <h1>KTU STATISTICS</h1>
+      <p class="subtitle">
+        View performance data of KTU-affiliated colleges across Kerala.<br />
+        Select a batch to see the overall pass rate and top colleges.
+      </p>
+      <div class="batch-list">
+        <div class="batch-item">2016 - 2020</div>
+        <div class="batch-item">2017 - 2021</div>
+        <div class="batch-item">2018 - 2022</div>
+        <div class="batch-item">2020 - 2024</div>
+        <div class="batch-item active">2021 - 2025</div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="right-card">
+        <div class="overall-stat">
+          <div class="overall-percentage" id="overall-percentage">--%</div>
+          <div class="stat-label">Overall Pass Rate</div>
+        </div>
+        <h3 class="card-subtitle">Top 5 Colleges by Pass Percentage</h3>
+        <ul id="top-colleges" class="college-list plain-list"></ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Full Table Section -->
+  <section class="data-table-section">
+    <div class="data-card">
+      <div class="table-header" id="table-header">
+        <span data-sort="index">Rank</span>
+        <span data-sort="name">College</span>
+        <span data-sort="reg">Registered</span>
+        <span data-sort="pass">Passed</span>
+        <span data-sort="rate">Pass %</span>
+      </div>
+      <div class="table-body" id="full-college-table"></div>
+    </div>
+  </section>
+
+  <!-- College History Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-card">
+      <button id="close-modal">×</button>
+      <h2 id="modal-title">College Name</h2>
+      <canvas id="history-chart" width="300" height="200"></canvas>
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Batch</th>
+            <th>Rank</th>
+            <th>Registered</th>
+            <th>Pass %</th>
+          </tr>
+        </thead>
+        <tbody id="modal-table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

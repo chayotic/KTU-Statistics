@@ -407,3 +407,57 @@ body {
 .history-table tbody td {
   width: 25%;
 }
+
+@media (max-width: 768px) {
+  .hero.split {
+    flex-direction: column;
+    padding: 100px 24px 40px;
+    gap: 40px;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+
+  .hero-right {
+    margin-left: 0;
+  }
+
+  .right-card {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .data-table-section {
+    padding: 40px 16px;
+  }
+
+  .table-header {
+    font-size: 13px;
+  }
+
+  .table-row span {
+    font-size: 13px;
+  }
+
+  .batch-list {
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .batch-item {
+    flex: 1 1 45%;
+    text-align: center;
+  }
+
+  .table-header,
+  .table-row {
+    min-width: 900px;
+    padding-right: 24px;
+  }
+
+  .data-card {
+    overflow-x: auto;
+  }
+}

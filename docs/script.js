@@ -5,6 +5,7 @@ const fullTableBody = document.getElementById('full-college-table');
 const tableHeader = document.getElementById('table-header');
 
 const modal = document.getElementById('modal-overlay');
+const modalContent = document.querySelector('.modal-content'); // Added for outside click detection
 const modalTitle = document.getElementById('modal-title');
 const modalTable = document.getElementById('modal-table-body');
 const closeModalBtn = document.getElementById('close-modal');
@@ -224,6 +225,7 @@ function showCollegeHistory(collegeName) {
   });
 }
 
+// Event Listeners
 batches.forEach(batch => {
   batch.addEventListener('click', () => {
     batches.forEach(b => b.classList.remove('active'));
@@ -235,6 +237,20 @@ batches.forEach(batch => {
 
 closeModalBtn.addEventListener('click', () => {
   modal.style.display = 'none';
+});
+
+// Close modal when clicking outside the content
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+// Close modal when pressing Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.style.display === 'flex') {
+    modal.style.display = 'none';
+  }
 });
 
 window.addEventListener('DOMContentLoaded', () => {

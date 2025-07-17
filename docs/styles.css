@@ -160,7 +160,7 @@ body {
   border-radius: 12px;
   margin-left: 24px;
   padding: 28px;
-  
+  max-width: 534px;
   display: flex;
   flex-direction: column;
   justify-content: center; 

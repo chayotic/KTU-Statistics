@@ -3,9 +3,9 @@ const collegeList = document.getElementById('top-colleges');
 const overallDisplay = document.getElementById('overall-percentage');
 const fullTableBody = document.getElementById('full-college-table');
 const tableHeader = document.getElementById('table-header');
+const collegeSearch = document.getElementById('college-search');
 
 const modal = document.getElementById('modal-overlay');
-const modalContent = document.querySelector('.modal-content'); // Added for outside click detection
 const modalTitle = document.getElementById('modal-title');
 const modalTable = document.getElementById('modal-table-body');
 const closeModalBtn = document.getElementById('close-modal');
@@ -73,6 +73,17 @@ function renderFullTable(colleges, sortKey = 'rate', sortDir = 'desc') {
       showCollegeHistory(college);
     });
   });
+}
+
+function handleSearch() {
+  const searchTerm = collegeSearch.value.toLowerCase().trim();
+  const filtered = searchTerm 
+    ? currentColleges.filter(college => 
+        college["Institution"].toLowerCase().includes(searchTerm)
+      )
+    : currentColleges;
+
+  renderFullTable(filtered, currentSort.key, currentSort.direction);
 }
 
 function loadData(batchName) {
@@ -231,6 +242,7 @@ batches.forEach(batch => {
     batches.forEach(b => b.classList.remove('active'));
     batch.classList.add('active');
     loadData(batch.textContent.trim());
+    collegeSearch.value = ''; // Clear search when changing batches
     modal.style.display = 'none';
   });
 });
@@ -239,26 +251,28 @@ closeModalBtn.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 
-// Close modal when clicking outside the content
 modal.addEventListener('click', (e) => {
   if (e.target === modal) {
     modal.style.display = 'none';
   }
 });
 
-// Close modal when pressing Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modal.style.display === 'flex') {
     modal.style.display = 'none';
   }
 });
 
+collegeSearch.addEventListener('input', handleSearch);
+
+tableHeader.addEventListener('click', e => {
+  if (modal.style.display === 'flex') return ;
+    modal.style.display = 'none';
+  const key = e.target.getAttribute('data-sort');
+  if (key) sortColleges(key);
+});
+
 window.addEventListener('DOMContentLoaded', () => {
   const defaultBatch = document.querySelector('.batch-item.active');
   if (defaultBatch) loadData(defaultBatch.textContent.trim());
-});
-
-tableHeader.addEventListener('click', e => {
-  const key = e.target.getAttribute('data-sort');
-  sortColleges(key);
 });

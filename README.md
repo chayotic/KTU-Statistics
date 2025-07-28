@@ -19,7 +19,7 @@ The project relies on manually curated batch-wise JSON files located in the `dat
 ```
 
 ## License
-This project is licensed under the [GNU General Public License v3.0](LICENSE).
+This project is licensed under the [MIT LICENSE](LICENSE).
 
 ## Notes
 This tool is intended for academic and statistical purposes. All data presented is derived from publicly available or institutionally provided sources. Accuracy depends on the completeness and correctness of the source data.
